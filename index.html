@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://files.catbox.moe/tjwdwp.png">
+    <title>Happy 17th Birthday Tanishka! 💜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0118;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .photo-card {
+            grid-row: span 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(168, 85, 247, 0.3), transparent 30%);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .photo-container {
+            position: relative;
+            z-index: 1;
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid rgba(168, 85, 247, 0.5);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name-tag {
+            margin-top: 20px;
+            font-size: 2em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #a855f7;
+            font-weight: 700;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        .icon {
+            font-size: 2em;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #c084fc;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+            display: block;
+            margin: 40px auto;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.6);
+        }
+
+        .surprise-section {
+            display: none;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 40px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .surprise-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .surprise-section p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .music-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: white;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.7);
+        }
+
+        .music-toggle.playing {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5); }
+            50% { box-shadow: 0 10px 40px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.5); }
+        }
+
+        #player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            font-size: 2em;
+            animation: floatUp 6s ease-in infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 3em;
+            }
+            
+            .photo-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Happy 17th Birthday</h1>
+            <p>Celebrating someone truly special ✨</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card photo-card">
+                <div class="photo-container">
+                    <img src="https://files.catbox.moe/y5138a.jpeg" alt="Tanishka">
+                </div>
+                <div class="name-tag">Tanishka 💜</div>
+            </div>
+
+            <div class="card info-card">
+                <h2>Your Favorites</h2>
+                <div class="info-item">
+                    <span class="icon">💜</span>
+                    <div>
+                        <strong>Favorite Color</strong><br>
+                        <span style="color: rgba(255,255,255,0.7)">Purple</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="icon">🍫</span>
+                    <div>
+                        <strong>Favorite Ice Cream</strong><br>
+                        <span style="color: rgba(255,255,255,0.7)">Chocolate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card info-card">
+                <h2>Our Special Day</h2>
+                <div style="font-size: 1.2em; margin: 20px 0; color: rgba(255,255,255,0.8);">
+                    The day we met and everything changed ✨
+                </div>
+                <div class="date-badge">12th December 2025</div>
+            </div>
+        </div>
+
+        <button class="cta-button" onclick="showSurprise()">🎁 Click for a Special Message</button>
+
+        <div class="surprise-section" id="surprise">
+            <h2>You're Incredible! 🌟</h2>
+            <p>
+                May this year bring you endless happiness, amazing adventures, and all the chocolate ice cream your heart desires! Here's to making more beautiful memories together. You deserve all the joy in the world! 💜✨🎂
+            </p>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        let player;
+        let isPlaying = false;
+        let playerReady = false;
+        
+        function onYouTubeIframeAPIReady() {
+            console.log('YouTube API loaded');
+            player = new YT.Player('player', {
+                videoId: 'GPGdXrQID7c',
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'disablekb': 1,
+                    'fs': 0,
+                    'modestbranding': 1,
+                    'playsinline': 1,
+                    'rel': 0,
+                    'iv_load_policy': 3,
+                    'enablejsapi': 1,
+                    'origin': window.location.origin
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log('Player is ready!');
+            playerReady = true;
+        }
+
+        function onPlayerError(event) {
+            console.error('YouTube player error:', event.data);
+        }
+
+        function onPlayerStateChange(event) {
+            const musicBtn = document.getElementById('musicBtn');
+            if (event.data === YT.PlayerState.PLAYING) {
+                musicBtn.classList.add('playing');
+                musicBtn.textContent = '⏸';
+                isPlaying = true;
+            } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                musicBtn.classList.remove('playing');
+                musicBtn.textContent = '🎵';
+                isPlaying = false;
+            }
+        }
+
+        function toggleMusic() {
+            if (!playerReady) {
+                console.log('Player not ready yet, waiting...');
+                setTimeout(toggleMusic, 500);
+                return;
+            }
+            
+            try {
+                if (isPlaying) {
+                    player.pauseVideo();
+                } else {
+                    player.playVideo();
+                    console.log('Attempting to play...');
+                }
+            } catch (e) {
+                console.error('Error toggling video:', e);
+            }
+        }
+
+        function showSurprise() {
+            const surprise = document.getElementById('surprise');
+            surprise.style.display = 'block';
+            
+            // Create floating hearts
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-hearts';
+                    heart.textContent = ['💜', '💕', '✨', '🎉'][Math.floor(Math.random() * 4)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 6000);
+                }, i * 100);
+            }
+        }
+
+        // Create ambient floating elements
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-hearts';
+                heart.textContent = '💜';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 1.5 + 1 + 'em';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 6000);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
